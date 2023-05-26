@@ -1,0 +1,59 @@
+﻿@model BBMS_Project.Models.DonorModel
+
+@{
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-left text-danger" })
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <section class="section-content-block ">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 margin-top-appointment-reverse">
+
+            <div class="appointment-form-wrapper theme-custom-box-shadow text-center clearfix  ">
+                <h3 class="text-center join-heading join-heading-alt">Login</h3>
+                <form class="appoinment-form">
+                    <div class="form-group col-md-12">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter email", autocomplete = "off" } })
+
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = " text-left text-danger" })
+                    </div>
+                    <div class="form-group col-md-12">
+                        @Html.EditorFor(model => model.Phoneno, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter contact number", autocomplete = "off" } })
+                        @Html.ValidationMessageFor(model => model.Phoneno, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group text-center col-md-12 col-sm-12 col-xs-12">
+                        <input type="submit" value="Login" class="btn btn-default" style="border-radius:4px" />
+                    </div>
+                    <div class="form-group  text-danger text-center col-md-12 col-sm-12 col-xs-12">
+                        @TempData["fail"]
+                    </div>
+                    <div class="form-group  text-center col-sm-12 col-xs-12">
+                        <p class=" text-center"> Don't have an account?</p>
+                        <a href='@Url.Action("AddDonor", "Donor")' class="btn btn-default">Register Now</a>
+                    </div>
+
+                </form>
+
+            </div> <!-- end .appointment-form-wrapper  -->
+
+        </div> <!--  end .col-lg-6 -->
+        @if (ViewBag.Message != null)
+        {
+            <script type="text/javascript">
+                             window.onload = function () {
+                                 alert("@ViewBag.Message");
+                                 document.location.href = '@Url.Action("Index2", "Donor")';
+                                };
+            </script>
+        }
+    </section>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

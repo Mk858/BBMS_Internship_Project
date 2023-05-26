@@ -1,0 +1,87 @@
+﻿@model IEnumerable<BBMS_Project.Models.BloodBankModel>
+
+@{
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+
+<h4 style="margin-left:1000px ; padding-top:70px">
+    BloodBank Details
+</h4>
+
+@*<p><a class="btn btn-default" href="@Url.Action("index", "Admin")"> Go To Dashboard  &raquo;</a></p>
+*@
+
+<table class="table" text-center" border="2"@* style="background-color:lightblue*@ ; width:82% ;margin-left:312px">
+    <tr>
+       @* <th>
+            @Html.DisplayNameFor(model => model.bloodbankid)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phoneno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.website)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.statename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cityname)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.bloodbankid)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phoneno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.website)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.statename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cityname)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditBloodBank", new { id = item.bloodbankid }, new { @class = "btn btn-info fa fa-pencil",@* style = "background-color: #3c64ad" *@})   |
+
+                @Html.ActionLink("Delete", "DeleteBloodBank", new { id = item.bloodbankid }, new { @class = "btn btn-info fa fa-pencil", style = "background-color: #cd1a1a" })
+            </td>
+        </tr>
+    }
+
+
+</table>
+
+
+<p>
+    <br>
+    <a class="btn btn-default" href="@Url.Action("AddBloodBank", "Admin")"> Add BloodBank   &raquo;</a>
+    @* @Html.ActionLink("Add", "AddBloodBank", new { @class = "btn btn-info fa fa-pencil" })*@
+</p>

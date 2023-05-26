@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Blood Buddies - Blood Donation Campaign & Multi-Concept Activism Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Reddrop Buddies - Blood Donation Campaign & Multi-Concept Activism">
+    <meta name="author" content="xenioushk">
+    <link rel="shortcut icon" href="~/UserUI/images/favicon.png" />
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- The styles -->
+    <link rel="stylesheet" href="~/UserUI/css/bootstrap.min.css" />
+    <link href="~/UserUI/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/UserUI/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="~/UserUI/css/owl.carousel.css" rel="stylesheet" type="text/css">
+    <link href="~/UserUI/css/venobox.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/UserUI/css/styles.css" />
+    @Styles.Render("~/UserUI/css")
+    @Scripts.Render("~/UserUI/js")
+</head>
+<body>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <script src="~/UserUI/js/jquery.min.js"></script>
+    <script src="~/UserUI/js/bootstrap.min.js"></script>
+    <script src="~/UserUI/js/wow.min.js"></script>
+    <script src="~/UserUI/js/jquery.backTop.min.js"></script>
+    <script src="~/UserUI/js/waypoints.min.js"></script>
+    <script src="~/UserUI/js/waypoints-sticky.min.js"></script>
+    <script src="~/UserUI/js/owl.carousel.min.js"></script>
+    <script src="~/UserUI/js/jquery.stellar.min.js"></script>
+    <script src="~/UserUI/js/jquery.counterup.min.js"></script>
+    <script src="~/UserUI/js/venobox.min.js"></script>
+    <script src="~/UserUI/js/custom-scripts.js"></script>
+
+    @Scripts.Render("~/UserUI/js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,137 @@
+﻿@model BBMS_Project.Models.Camp
+
+@{
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div div class="form-horizontal" style="margin-left: 750px; padding-top: 70px">
+    <h4 style="padding-left:30px; padding-top:20px;margin-left:150px">Update Camp</h4>
+    
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.campid)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.stateid, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @if (ViewBag.StateName != null)
+            {
+                @Html.DropDownListFor(Model => Model.stateid, ViewBag.StateName as SelectList, "-- Select State --", new { @class = "form-control" })
+            }
+            @Html.ValidationMessageFor(model => model.stateid, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.cityid, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("cityid", new SelectList(string.Empty, "cityid", "cityname"), "-- Select City --", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.cityid, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.contactno, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.contactno, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.contactno, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.conductedby, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.conductedby, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.conductedby, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.organizedby, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.organizedby, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.organizedby, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.schedstart, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.schedstart, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.schedstart, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.schedend, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.schedend, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.schedend, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            
+            $("#stateid").change(function () {
+               
+                $("#cityid").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("cityList", "Admin")',
+                    dataType: 'json',
+                    data: { id: $("#stateid").val() },
+                    success: function (City) {
+                       
+                        $.each(City, function (i, City) {
+                            $("#cityid").append('<option value="'+ City.Value + '">'+ City.Text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                       
+                        alert(ex.StatusText);
+                    }
+                });
+                return City;
+            })
+        });
+    </script>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "GetAllCampDatials")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

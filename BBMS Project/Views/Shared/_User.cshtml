@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Blood Buddies - Blood Donation Campaign & Multi-Concept Activism Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Reddrop Buddies - Blood Donation Campaign & Multi-Concept Activism">
+    <meta name="author" content="xenioushk">
+    <link rel="shortcut icon" href="~/UserUI/images/favicon.png" />
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- The styles -->
+    <link rel="stylesheet" href="~/UserUI/css/bootstrap.min.css" />
+    <link href="~/UserUI/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/UserUI/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="~/UserUI/css/owl.carousel.css" rel="stylesheet" type="text/css">
+    <link href="~/UserUI/css/venobox.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/UserUI/css/styles.css" />
+    @Styles.Render("~/UserUI/css")
+    @Scripts.Render("~/UserUI/js")
+</head>
+<body>
+
+    <div id="preloader">
+        <span class="margin-bottom">    </span>
+    </div>
+
+    <!--  HEADER -->
+
+    <header class="main-header clearfix" data-sticky_header="true">
+
+        <div class="top-bar clearfix">
+
+            <div class="container">
+
+                <div class="row">
+                     
+                    <div class="col-md-8 col-sm-12">
+
+                        <p>
+                            @*<span>  <strong>Contact: </strong> Amnex Infotechnologies, Ahmedabad</span>*@
+                            <span>  <i class="fa fa-phone"></i> <strong>Call Us :</strong> +91 9876543210</span>
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-4col-sm-12">
+                        <div class="top-bar-social">
+                            <a href="https://www.facebook.com/">
+                                <i class="fa fa-facebook rounded-box"></i>
+                            </a>
+                            <a href=""><i class="fa fa-twitter rounded-box"></i></a>
+                            <a href="https://twitter.com/login"><i class="fa fa-google-plus rounded-box"></i></a>
+                            <a href="https://www.instagram.com/"><i class="fa fa-instagram rounded-box"></i></a>
+                            <a href="https://www.youtube.com/"><i class="fa fa-youtube rounded-box"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div> <!--  end .container -->
+
+        </div> <!--  end .top-bar  -->
+
+        <section class="header-wrapper navgiation-wrapper">
+
+            <div class="navbar navbar-default">
+                <div class="container">
+
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="logo" href="@Url.Action("HomePage", "Home")"><img alt="" src="~/UserUI/images/logo.png"></a>
+                    </div>
+
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+
+                            <li>
+                                <a href='@Url.Action("HomePage", "Home")'>Home </a>
+                            </li>
+
+                            <li>
+
+                                <a href='@Url.Action("About", "Home")'>About us </a>
+                            </li>
+
+                            <li class="drop">
+                                <a href="#">Looking For Blood</a>
+                                <ul class="drop-down">
+
+                                   @* <li>
+                                        <a href="@Url.Action("GetAllBloodStock", "BloodStock")">Blood Availability</a>
+                                    </li>*@
+
+                                    <li>
+                                        <a href="@Url.Action("getBloodBankDetails", "BloodBank")">Blood Bank Directory</a>
+                                    </li>
+
+                                    <li>
+                                        @if (Session["SeekerID"] == null)
+                                        {
+                                            <a href='@Url.Action("SeekerLogin", "Seeker")'> Seeker Login </a>
+                                        }
+
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#"> Donate Blood</a>
+                                <ul class="drop-down">
+                                    <li><a href="@Url.Action("getCampDetails", "Camp")">Blood Donation Camp</a></li>
+                                    <li><a href="@Url.Action("DonorLogin", "Donor")">Donor Login</a></li>
+                                    <li><a href="@Url.Action("AboutBloodDonate", "Admin")">About Blood Donation</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#">Blood Bank Login</a>
+                                <ul class="drop-down">
+                                    <li><a href="@Url.Action("bloodBankLogin", "BloodBank")">Blood Bank Login</a></li>
+                                    <li><a href="@Url.Action("AddBloodBank", "BloodBank")">Add Your Blood Bank</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="@Url.Action("Contact", "Home")"> Contact us </a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </header> <!-- end main-header  -->
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <!-- START FOOTER  -->
+
+    <footer>
+
+        <section class="footer-widget-area footer-widget-area-bg">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <div class="about-footer">
+
+                            <div class="row">
+
+                                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                    <img src="~/UserUI/images/logo-footer.png" alt="" />
+                                </div> <!--  end col-lg-3-->
+
+                                <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                                    <p>
+                                        We are world largest and trustful blood donation center. We have been working since 1973 with a prestigious vision to helping patient to provide blood.
+                                        We are working all over the world, organizing blood donation campaign to grow awareness among the people to donate blood.
+                                    </p>
+                                </div> <!--  end .col-lg-9  -->
+
+                            </div> <!--  end .row -->
+
+                        </div> <!--  end .about-footer  -->
+
+                    </div> <!--  end .col-md-12  -->
+
+                </div> <!--  end .row  -->
+
+                <div class="row">
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+
+                        <div class="footer-widget">
+
+                            <div class="sidebar-widget-wrapper">
+
+                                <div class="footer-widget-header clearfix">
+                                    <h3>Contact Us</h3>
+                                </div>  <!--  end .footer-widget-header -->
+
+
+                                <div class="textwidget">
+
+                                    <i class="fa fa-envelope-o fa-contact"></i> <p><a href="mailto:support@donation.com<">support@donation.com</a><br /><a href="mailto:helpme@donation.com">helpme@donation.com</a></p>
+
+                                    <i class="fa fa-location-arrow fa-contact"></i> <p> Amnex Blood Management System, <br />SG Highway, Ahmedabad</p>
+
+                                    <i class="fa fa-phone fa-contact"></i> <p>Office:&nbsp; +91 9876543210<br />Cell:&nbsp; +91 9638527410</p>
+
+                                </div>
+
+                            </div> <!-- end .footer-widget-wrapper  -->
+
+                        </div> <!--  end .footer-widget  -->
+
+                    </div> <!--  end .col-md-4 col-sm-12 -->
+
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+
+                        <div class="footer-widget clearfix">
+
+                            <div class="sidebar-widget-wrapper">
+
+                                <div class="footer-widget-header clearfix">
+                                    <h3> Links</h3>
+                                </div>  <!--  end .footer-widget-header -->
+
+
+                                <ul class="footer-useful-links">
+
+                                    <li>
+                                        <a href="@Url.Action("Homepage", "Home")">
+                                            <i class="fa fa-caret-right fa-footer"></i>
+                                            <span>Home</span>
+                                        </a>
+                                    </li>
+
+
+
+                                    <li>
+                                        <a href="@Url.Action("GetAllBloodBankDetails", "BloodBank")">
+
+                                            <i class="fa fa-caret-right fa-footer"></i>
+                                            <span>Blood Bank Details </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("About", "Home")">
+                                            <i class="fa fa-caret-right fa-footer"></i>
+                                            <span>About Us </span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("AboutBloodDonate", "Admin")">
+                                            <i class="fa fa-caret-right fa-footer"></i>
+                                            <span>Blood Donation </span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("SeekerLogin", "Seeker")">
+                                            <i class="fa fa-caret-right fa-footer"></i>
+                                            <span>Seeker Login</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("GetAllBloodStock", "BloodStock")">
+                                            <i class="fa fa-caret-right fa-footer"></i>
+                                            <span>Blood Availability</span>
+                                        </a>
+                                    </li>
+
+
+                                    <li>
+                                        <a href="@Url.Action("DonorLogin", "Donor")">
+                                            <i class="fa fa-caret-right fa-footer"></i>
+                                            <span>Donor Login</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("bloodbanklogin", "BllodBank")">
+                                            <i class="fa fa-caret-right fa-footer"></i>
+                                            <span>Blood Bank Login</span>
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Contact", "Home")">
+                                            <i class="fa fa-caret-right fa-footer"></i>
+                                            <span>Contact Us </span>
+                                        </a>
+                                    </li>
+
+
+
+                                </ul>
+
+                            </div> <!--  end .footer-widget  -->
+
+                        </div> <!--  end .footer-widget  -->
+
+                    </div> <!--  end .col-md-4 col-sm-12 -->
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+
+                        <div class="footer-widget">
+                            <div class="sidebar-widget-wrapper">
+                                <div class="footer-widget-header clearfix">
+                                    <h3>Subscribe Us</h3>
+                                </div>
+                                <p>Signup for regular newsletter and stay up to date with our latest news.</p>
+                                <div class="footer-subscription">
+                                    <p>
+                                        <input id="mc4wp_email" class="form-control" required="" placeholder="Enter Your Email" name="EMAIL" type="email">
+                                    </p>
+                                    <p>
+                                        <input class="btn btn-default" value="Subscribe Now" type="submit">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> <!--  end .col-md-4 col-sm-12 -->
+
+                </div> <!-- end row  -->
+
+            </div> <!-- end .container  -->
+
+        </section> <!--  end .footer-widget-area  -->
+        <!--FOOTER CONTENT  -->
+
+        <section class="footer-contents">
+
+            <div class="container">
+
+                <div class="row clearfix">
+
+                    <div class="col-md-12 col-sm-12 text-center">
+                        <p class="copyright-text"> Copyright 2018 - Blood Buddies by BlueWindLab. All Rights Reserved. </p>
+                    </div>  <!-- end .col-sm-6  -->
+
+                </div> <!-- end .row  -->
+
+            </div> <!--  end .container  -->
+
+        </section> <!--  end .footer-content  -->
+
+    </footer>
+
+    <!-- END FOOTER  -->
+    <!-- Back To Top Button  -->
+
+    <a id="backTop">Back To Top</a>
+
+    <script src="~/UserUI/js/jquery.min.js"></script>
+    <script src="~/UserUI/js/bootstrap.min.js"></script>
+    <script src="~/UserUI/js/wow.min.js"></script>
+    <script src="~/UserUI/js/jquery.backTop.min.js"></script>
+    <script src="~/UserUI/js/waypoints.min.js"></script>
+    <script src="~/UserUI/js/waypoints-sticky.min.js"></script>
+    <script src="~/UserUI/js/owl.carousel.min.js"></script>
+    <script src="~/UserUI/js/jquery.stellar.min.js"></script>
+    <script src="~/UserUI/js/jquery.counterup.min.js"></script>
+    <script src="~/UserUI/js/venobox.min.js"></script>
+    <script src="~/UserUI/js/custom-scripts.js"></script>
+
+    @Scripts.Render("~/UserUI/js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

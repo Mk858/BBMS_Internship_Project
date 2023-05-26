@@ -1,0 +1,76 @@
+﻿@model BBMS.Models.SeekerModel
+
+<div>
+    <h4>SeekerModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bloodgroup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bloodgroup)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Bloodbank)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bloodbank)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequirementDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequirementDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Volume)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Volume)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Createdon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Createdon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seekerrequestid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seekerrequestid)
+        </dd>*@
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.seekerrequestid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

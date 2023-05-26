@@ -1,0 +1,79 @@
+﻿
+@model List<BBMS_Project.Models.SeekerModel>
+@*@{
+        Layout = null;
+    }
+
+    <!DOCTYPE HTML>
+    <html>
+    <head>
+        <script>
+    window.onload = function () {
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+        theme: "light1", // "light1", "light2", "dark1", "dark2"
+        exportEnabled: true,
+        animationEnabled: true,
+        title: {
+            text: "Indian Smartphone Market Share"
+        },
+        subtitles: [{
+            text: "Q2, 2016"
+        }],
+        data: [{
+            type: "pie",
+            startAngle: 180,
+            toolTipContent: "<b>{label}</b>: {y}%",
+            showInLegend: "true",
+            legendText: "{label}",
+            indexLabel: "{label} - {y}%",
+            dataPoints: @Html.Raw(ViewBag.Pichart)
+        }]
+    });
+    chart.render();
+
+    }
+        </script>
+    </head>
+    <body>
+        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+        <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+    </body>
+    </html>*@
+
+
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+
+<body>
+
+    @{
+        var chart = new Chart(width: 500, height: 500, theme: ChartTheme.Green)
+       .AddTitle("Seeker request Status")
+       .AddLegend("Request")
+       .AddSeries("Default", chartType: "Pie",
+            xValue: Model, xField: "ReqStat",
+            yValues: Model, yFields: "seekerrequestid")
+        .Write();
+
+    }
+
+
+
+
+
+</body>
+</html>
+
+

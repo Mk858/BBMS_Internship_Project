@@ -1,0 +1,125 @@
+﻿@model BBMS.Models.SeekerModel
+
+
+@using (Html.BeginForm("AddRequest", "Seeker", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Send a Request</h4>
+        <hr/>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Bloodgroup, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Bloodgroup, new SelectList(ViewBag.BloodGroupName, "bloodgroupid", "Bloodgroup"), "Select bloodgroup", new { @class = "form-control", @placeholder = "Select bloodgroup" })
+                @Html.ValidationMessageFor(model => model.Bloodgroup, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(model => model.State, new SelectList(ViewBag.StateName, "stateid", "State"), "Select state", new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.City, new SelectList(string.Empty, "Value", "Text"), "Select city", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Bloodbank, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Bloodbank, new SelectList(string.Empty, "Value", "Text"), "Select bloodbank", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Bloodbank, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RequirementDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RequirementDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RequirementDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Volume, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Volume, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter volume in (ml)", autocomplete = "off" } })
+                @Html.ValidationMessageFor(model => model.Volume, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Send request" class="btn btn-default" @*onclick="location.href='@Url.Action("Index1", "Seeker")')"*@>
+            </div>
+        </div>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function () {
+            debugger;
+            $("#State").change(function () {
+                debugger;
+                $("#City").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("cityList", "Seeker")',
+                    dataType: 'json',
+                    data: { id: $("#State").val() },
+                    success: function (City) {
+                        debugger;
+                        $.each(City, function (i, City) {
+                            $("#City").append('<option value="'+ City.Value + '">'+ City.Text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        debugger;
+                        alert(ex.StatusText);
+                    }
+                });
+                return City;
+            })
+        });
+    $(document).ready(function () {
+        //Dropdownlist Selectedchange event
+        $("#City").change(function () {
+            $("#Bloodbank").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("bloodbanklist","Seeker")',
+                dataType: 'json',
+                data: { id: $("#City").val() },
+                success: function (Bloodbank) {
+                    // states contains the JSON formatted list
+                    // of states passed from the controller
+                    $.each(Bloodbank, function (i, Bloodbank) {
+                        $("#Bloodbank").append('<option value="'
+                            + Bloodbank.Value + '">'
+                            + Bloodbank.Text + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve states.' + ex);
+                }
+            });
+            return false;
+        })
+    });
+        </script>
+    </div>
+}
+

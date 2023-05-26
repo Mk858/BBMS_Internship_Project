@@ -1,0 +1,76 @@
+﻿@model IEnumerable<BBMS_Project.Models.DonorModel>
+
+@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h4 style="margin-left:1000px ; padding-top:70px">
+
+    Rejected Donor Request
+</h4>
+<table class="table text-center" border="1" style="background-color:lightblue ; width:82% ;margin-left:312px">
+    <tr>
+       @* <th>
+            @Html.DisplayNameFor(model => model.donorreqid)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Fullname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bloodgroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Requestdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bloodbank)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Volume)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reqstat)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.donorreqid)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Fullname)
+            </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.Bloodgroup)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Requestdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bloodbank)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Volume)
+            </td>
+            <td style="font-weight:bold;color:red">
+                @Html.DisplayFor(modelItem => item.Reqstat)
+            </td>
+        </tr>
+    }
+
+</table>

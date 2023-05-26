@@ -1,0 +1,108 @@
+﻿@model IEnumerable<BBMS_Project.Models.SeekerModel>
+
+@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<h4 style="margin-left:1000px ; padding-top:70px">
+    Seeker Details
+</h4>
+
+<table class="table text-center" border="2" ; width:82% ;margin-left:312px">
+    <tr>
+       @* <th>
+            @Html.DisplayNameFor(model => model.seekerid)
+        </th>*@
+
+        <th>
+            @Html.DisplayNameFor(model => model.Fullname)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthdate)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Bloodgroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pincode)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phoneno)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.seekerid)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Fullname)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthdate)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Bloodgroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pincode)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phoneno)
+            </td>
+
+            <td>
+              @*  @Html.ActionLink("Edit", "EditAdminSeekerDetails", new { id = item.seekerid }, new { @class = "btn btn-info fa fa-pencil", style = "background-color: #3c64ad" }) |*@
+
+                @Html.ActionLink("Delete", "DeleteSeeker", new { id = item.seekerid }, new { @class = "btn btn-info fa fa-pencil", style = "background-color: #cd1a1a" })
+            </td>
+        </tr>
+    }
+
+</table>

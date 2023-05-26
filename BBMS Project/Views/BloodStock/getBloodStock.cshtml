@@ -1,0 +1,93 @@
+﻿@model IEnumerable<BBMS_Project.Models.BloodStockModel>
+
+@{
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+
+<a href="@Url.Action("AddBloodStock","BloodStock")">Add Blood Stock</a>
+<style>
+    html,
+    body,
+    .intro {
+        height: 100%;
+    }
+
+    table td,
+    table th {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    thead {
+        font-weight: 300;
+        color: red;
+    }
+
+    .mask-custom {
+        background: rgba(24, 24, 16, .2);
+        border-radius: 2em;
+        backdrop-filter: blur(25px);
+        border: 2px solid rgba(255, 255, 255, 0.05);
+        background-clip: padding-box;
+        box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+    }
+</style>
+
+<section class="intro">
+    <div class="bg-image h-100">
+        <div class="mask d-flex align-items-center h-100">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="card mask-custom">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-borderless text-white mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.bloodstockid)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.bloodgroup)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.quantity)
+                                                </th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.bloodstockid)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.bloodgroup)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.quantity)
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Edit", "EditBloodStock", new { id = item.bloodstockid }) |
+                                                    @Html.ActionLink("Delete", "DeleteBloodStock", new { id = item.bloodstockid })
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<a href="@Url.Action("WelCome","BloodBank")">Back</a>

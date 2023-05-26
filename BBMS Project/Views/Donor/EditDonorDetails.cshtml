@@ -1,0 +1,209 @@
+﻿@model BBMS_Project.Models.DonorModel
+
+@{
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+<style>
+    .dropbtn {
+        background-color: #EF3D32;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        padding-left: 20px;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropbtn div {
+        width: 20px;
+        height: 3px;
+        background-color: black;
+        margin: 3px 0;
+    }
+
+    .welcome {
+        text-align: left;
+        font-size: 20px;
+        padding-left: 15px;
+    }
+</style>
+<div style="text-align:left; font-size:20px; padding-left:15px; margin-top:50px;">
+    <b>
+        Welcome
+        @Session["Donor"] &nbsp;!
+    </b>
+
+
+</div>
+<div class="dropdown">
+    <button class="dropbtn">
+        <div></div>
+        <div></div>
+        <div></div>
+    </button>
+    <div class="dropdown-content">
+        <a href='@Url.Action("AddRequest", "Donor")'>Send Request</a>
+        <a href='@Url.Action("HistoryDetails", "Donor")'> History</a>
+        <a href='@Url.Action("EditDonorDetails", "Donor")'>Update Profile</a>
+        <a href='@Url.Action("DeleteDonor", "Donor")'> Delete Account</a>
+
+        <a href='@Url.Action("LogoutDonor", "Donor")'>Logout</a>
+
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <section class="section-content-block ">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 margin-top-appointment-reverse">
+
+            <div class="appointment-form-wrapper theme-custom-box-shadow text-center clearfix  ">
+                <h3 class="text-center join-heading join-heading-alt">Update profile</h3>
+                <form class="appoinment-form">
+
+                    <div class="form-group col-md-6">
+
+                        @Html.EditorFor(model => model.Fullname, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Full Name", autocomplete = "off" } })
+                    </div>
+                    <div class="form-group col-md-6">
+                        @Html.DropDownListFor(model => model.genderid, ViewBag.GenderName as SelectList, "Select gender", new { @class = "form-control" })
+
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        @Html.EditorFor(model => model.Birthdate, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        @Html.DropDownListFor(model => model.bloodgroupid, ViewBag.BloodGroupName as SelectList, "Select bloodgroup", new { @class = "form-control", @placeholder = "Select bloodgroup" })
+
+                    </div>
+
+
+                    <div class="form-group col-md-6">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+
+                    @* <div class="form-group col-md-6">
+                            @Html.EditorFor(model => model.Pancardno, new { htmlAttributes = new { @class = "form-control" } })
+
+                        </div>*@
+
+
+                    <div class="form-group col-md-6">
+                        @Html.EditorFor(model => model.Phoneno, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        @Html.DropDownListFor(model => model.stateid, new SelectList(ViewBag.StateName, "stateid", "State"), "Select state", new { @class = "form-control" })
+
+                    </div>
+
+
+                    <div class="form-group col-md-4">
+                        @Html.DropDownListFor(model => model.cityid, new SelectList(string.Empty, "Value", "Text"), "Select city", new { @class = "form-control" })
+
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        @Html.EditorFor(model => model.Pincode, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <input type="submit" value="Update" class="btn btn-default text-center" />&nbsp;&nbsp;
+                        <input type="reset" value="Cancel" class="btn btn-default text-center" />
+                    </div>
+
+
+                    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+                    <script src="~/Scripts/jquery.validate.js"></script>
+                    <script src="~/Scripts/jquery.validate.min.js"></script>
+                    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+                    <script type="text/javascript">
+                    $(document).ready(function () {
+            debugger;
+            $("#stateid").change(function () {
+                debugger;
+                $("#cityid").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("cityList", "Donor")',
+                    dataType: 'json',
+                    data: { id: $("#stateid").val() },
+                    success: function (City) {
+                        debugger;
+                        $.each(City, function (i, City) {
+                            $("#cityid").append('<option value="'+ City.Value + '">'+ City.Text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        debugger;
+                        alert(ex.StatusText);
+                    }
+                });
+                return City;
+            })
+                    });
+
+                    </script>
+                    @if (ViewBag.message != null)
+                    {
+                        <script type="text/javascript">
+       $(function () {
+           alert("@ViewBag.Message");
+            document.location.href = '@Url.Action("DonorLogin", "Donor")';
+        });
+                        </script>
+                    }
+                </form>
+
+            </div>
+        </div>
+    </section>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,70 @@
+﻿@model BBMS_Project.Models.BloodStockModel
+
+@{
+    Layout = "~/Views/Shared/_UTemp.cshtml";
+}
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>BloodStock</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.bloodstockid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bloodstockid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bloodbankname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bloodbankname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.statename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.statename)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cityname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cityname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bloodgroup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bloodgroup)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm("DeleteBloodStock", "BloodStock", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "getBloodStock")
+        </div>
+    }
+</div>

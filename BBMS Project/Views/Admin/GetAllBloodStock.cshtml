@@ -1,0 +1,66 @@
+﻿@model IEnumerable<BBMS_Project.Models.BloodStockModel>
+
+@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h4 style="margin-left:1000px ; padding-top:70px">
+    Blood Stock 
+</h4>
+<table class="table text-center" border="1" style="background-color:lightblue ; width:82% ;margin-left:312px">
+    <tr>
+        @* <th>
+            @Html.DisplayNameFor(model => model.bloodstockid)
+        </th>*@
+
+        <th>
+            @Html.DisplayNameFor(model => model.bloodbankname)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.statename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cityname)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.bloodgroup)
+        </th>
+
+        <th style="font-weight: bold; color: #3c64ad">
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*  <td>
+            @Html.DisplayFor(modelItem => item.bloodstockid)
+        </td>*@
+
+            <td>
+                @Html.DisplayFor(modelItem => item.bloodbankname)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.statename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cityname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bloodgroup)
+            </td>
+
+            <td style="font-weight: bold; color: #3c64ad">
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<BBMS_Project.Models.Camp>
+
+@{
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+
+<h4 style="margin-left:1000px ; padding-top:70px">
+    Camp Details
+</h4>
+
+
+<p>
+    @Html.ActionLink("Add New Camp", "AddCamp")
+</p>
+<table class="table text-center" border="2" style="background-color: #EF3D32 ; width: 82%; margin-left: 312px">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.state)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contactno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.conductedby)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.organizedby)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.schedstart) 
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.schedend)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.state)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contactno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.conductedby)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.organizedby)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.schedstart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.schedend)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditCamp", new { id = item.campid } , new { @class = "btn btn-info fa fa-pencil", style = "background-color: #3c64ad" }) |
+         
+                @Html.ActionLink("Delete", "DeleteCamp", new { id = item.campid } , new { @class = "btn btn-info fa fa-pencil", style = "background-color: #cd1a1a" })
+            </td>
+        </tr>
+    }
+
+</table>

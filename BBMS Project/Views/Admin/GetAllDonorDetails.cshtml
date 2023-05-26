@@ -1,0 +1,117 @@
+﻿@model IEnumerable<BBMS_Project.Models.DonorModel>
+
+@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h4 style="margin-left:1000px ; padding-top:70px">
+    Donor Details
+</h4>
+
+
+
+
+<table class="table text-center"  style="width: 82%; margin-left: 312px ">
+
+    <tr>
+       @* <th>
+            @Html.HiddenFor(model => model.donorid)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Fullname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bloodgroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pincode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phoneno)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Pancardno)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.password)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                @Html.HiddenFor(modelItem => item.donorid)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bloodgroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pincode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phoneno)
+            </td>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.Pancardno)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            @* <td>
+                    @Html.DisplayFor(modelItem => item.password)
+                </td>*@
+            <td>
+                @* @Html.ActionLink("Edit", "EditDonorDetails", new { id = item.donorid }, new { @class = "btn btn-info fa fa-pencil", style = "background-color: #3c64ad" })  |*@
+                @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                @Html.ActionLink("Delete", "DeleteDonor", new { id = item.donorid }, new { @class = "btn btn-info fa fa-pencil", style = "background-color: #FF7276" })
+            </td>
+
+        </tr>
+
+    }
+
+</table>

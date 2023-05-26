@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Blood Bank</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/AdminUI/img/favicon.png" rel="icon">
+    <link href="~/AdminUI/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/AdminUI/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/AdminUI/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/AdminUI/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/AdminUI/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="~/AdminUI/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="~/AdminUI/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/AdminUI/vendor/simple-datatables/style.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/AdminUI/css/style.css" rel="stylesheet">
+
+
+    @Styles.Render("~/AdminUI/css")
+    @Scripts.Render("~/AdminUI/js")
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+
+    <!-- Vendor JS Files -->
+    <script src="~/AdminUI/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="~/AdminUI/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/AdminUI/vendor/chart.js/chart.umd.js"></script>
+    <script src="~/AdminUI/vendor/echarts/echarts.min.js"></script>
+    <script src="~/AdminUI/vendor/quill/quill.min.js"></script>
+    <script src="~/AdminUI/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="~/AdminUI/vendor/tinymce/tinymce.min.js"></script>
+    <script src="~/AdminUI/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/AdminUI/js/main.js"></script>
+
+    @Scripts.Render("~/AdminUI/js")
+    @Scripts.Render("~/AdminUI/vendor")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
